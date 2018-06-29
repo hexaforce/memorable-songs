@@ -1,4 +1,4 @@
-package io.hexaforce.songs;
+package io.hexaforce.songs.service;
 
 public class SongListService {
 

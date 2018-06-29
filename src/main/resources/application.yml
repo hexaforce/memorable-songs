@@ -32,6 +32,6 @@ spring:
     hibernate:
       ddl-auto: none
   messages:
-    basename: messages/messages
+    basename: messages
   thymeleaf:
     mode: HTML

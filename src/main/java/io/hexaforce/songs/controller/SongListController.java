@@ -1,4 +1,4 @@
-package io.hexaforce.songs;
+package io.hexaforce.songs.controller;
 
 import java.util.Map;
 
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SongListController {
 	
     @GetMapping("/song-list.html")
-    public String showVetList(Map<String, Object> model) {
+    public String showSongList(Map<String, Object> model) {
 //        Vets vets = new Vets();
 //        vets.getVetList().addAll(this.vets.findAll());
 //        model.put("vets", vets);
-        return "vets/vetList";
+        return "song-list";
     }
     
 }
