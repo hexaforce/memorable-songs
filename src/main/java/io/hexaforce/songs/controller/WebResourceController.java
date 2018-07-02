@@ -24,5 +24,11 @@ class WebResourceController {
     	log.debug("music-list");
         return "music-list";
     }
+
+    @GetMapping("/music-list2")
+    public String showSongList2(Map<String, Object> model) {
+    	log.debug("music-list2");
+        return "music-list2";
+    }
     
 }
