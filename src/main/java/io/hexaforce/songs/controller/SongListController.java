@@ -17,7 +17,7 @@ public class SongListController {
 	@Autowired
 	private SongListService songListService;
 
-	@GetMapping("/song-list")
+	@GetMapping("/song-list-1980")
 	public ResponseEntity<List<MusicItem>> songList() {
 		
 		List<MusicItem> musicItemList = songListService.getMusicItemList();

@@ -13,7 +13,7 @@ class WebResourceController {
 		return "index";
 	}
 	
-    @GetMapping("/song-list.html")
+    @GetMapping("/song-list")
     public String showSongList(Map<String, Object> model) {
 //        Vets vets = new Vets();
 //        vets.getVetList().addAll(this.vets.findAll());
