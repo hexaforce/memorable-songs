@@ -14,6 +14,11 @@ public class SongListController {
 	@Autowired
 	private SongListService songListService;
 	
+	public String aaa() {
+		return null;
+	}
+	
+	
     @GetMapping("/song-list.html")
     public String showSongList(Map<String, Object> model) {
 //        Vets vets = new Vets();

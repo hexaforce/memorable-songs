@@ -1,10 +1,10 @@
-package io.hexaforce.songs;
+package io.hexaforce.songs.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-class IndexController {
+class WebResourceController {
 
 	@GetMapping("/")
 	public String index() {
