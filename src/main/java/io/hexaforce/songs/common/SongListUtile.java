@@ -12,7 +12,7 @@ public class SongListUtile {
 	private MemorableSongsProperties memorableSongsProperties;
 	
 	public void aaa() {
-		memorableSongsProperties.getSongDirectory();
+		memorableSongsProperties.getTopMusicDirectory();
 	}
 	
 }

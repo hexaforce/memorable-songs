@@ -37,3 +37,5 @@ spring:
     basename: messages
   thymeleaf:
     mode: HTML
+  song: 
+    top-music-directory: 'C:\Users\Public\Music\Sample Music'

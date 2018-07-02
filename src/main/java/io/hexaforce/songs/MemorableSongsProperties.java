@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 @ConfigurationProperties(prefix = "spring.song", ignoreUnknownFields = true)
 public class MemorableSongsProperties {
-	private String songDirectory;
+	private String topMusicDirectory;
 }

@@ -13,21 +13,22 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
-@EnableConfigurationProperties(MemorableSongsConfiguration.class)
+@EnableConfigurationProperties(MemorableSongsProperties.class)
 public class MemorableSongsConfiguration implements WebMvcConfigurer {
 
 	@Autowired
 	private MemorableSongsProperties memorableSongsProperties;
-	
+
 	@PostConstruct
 	private void setupSongListDatabase() {
-		
-		File songTopDirectory = new File(memorableSongsProperties.getSongDirectory());
-		for (File songDirectory : songTopDirectory.listFiles()) {
-			for (File songItem : songDirectory.listFiles()) {
-				
+
+		File topMusicDirectory = new File(memorableSongsProperties.getTopMusicDirectory());
+		for (File musicDirectory : topMusicDirectory.listFiles()) {
+			for (File musicItem : musicDirectory.listFiles()) {
+				log.debug("musicItem:{}", musicItem);
 			}
 		}
+		
 	}
-	
+
 }
