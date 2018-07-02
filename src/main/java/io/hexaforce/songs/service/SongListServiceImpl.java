@@ -19,7 +19,7 @@ public class SongListServiceImpl implements SongListService {
 	private SongListUtile songListUtile;
 	
 	@ResponseBody
-	@RequestMapping(path = "/examinees-numbering", method = RequestMethod.GET)
+	@RequestMapping(path = "/song-list", method = RequestMethod.GET)
 	private void aaa() {
 		
 	}
