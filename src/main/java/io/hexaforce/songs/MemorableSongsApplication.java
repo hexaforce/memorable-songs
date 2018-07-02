@@ -12,9 +12,4 @@ public class MemorableSongsApplication {
 		SpringApplication.run(MemorableSongsApplication.class, args);
 	}
 	
-	@PostConstruct
-	private void setupSongListDatabase() {
-		
-	}
-	
 }
