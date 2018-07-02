@@ -1,5 +1,11 @@
 package io.hexaforce.songs.service;
 
-public interface SongListService {
+import java.util.List;
 
+import io.hexaforce.songs.model.MusicItem;
+
+public interface SongListService {
+	
+	public List<MusicItem> getMusicItemList();
+	
 }
