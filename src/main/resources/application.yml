@@ -1,5 +1,5 @@
 # database init, supports mysql too
-database: h2
+# database: h2
 # database: mysql
 
 # Logging
@@ -23,8 +23,10 @@ spring:
     active: production
   datasource:
 #    initialization-mode: always
-    data: classpath*:db/${database}/data.sql
-    schema: classpath*:db/${database}/schema.sql
+#    data: classpath*:db/${database}/data.sql
+#    schema: classpath*:db/${database}/schema.sql
+    data: classpath*:h2/data.sql
+    schema: classpath*:h2/schema.sql
 #    url: 'jdbc:mysql://localhost/petclinic'
 #    username: root
 #    password: petclinic
