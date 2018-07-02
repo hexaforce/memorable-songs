@@ -1,5 +1,5 @@
 # database init, supports mysql too
-database: hsqldb
+database: h2
 # database: mysql
 
 # Logging
