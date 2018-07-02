@@ -72,6 +72,12 @@
 			<artifactId>bootstrap</artifactId>
 			<version>4.1.1</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.javamusictag</groupId>
+			<artifactId>jid3lib</artifactId>
+			<version>0.5.4</version>
+		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>jplayer</artifactId>
