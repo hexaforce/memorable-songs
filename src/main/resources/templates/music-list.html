@@ -1,4 +1,7 @@
 <div class="table-responsive">
+
+<select ng-model="year" ng-options="x.key as x.value for x in years" ng-change="changeYears()"></select>
+
   <table class="table table-striped table-sm">
     <thead>
       <tr>
