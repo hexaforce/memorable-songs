@@ -3,33 +3,38 @@ var app = angular.module('MusicServer', ['ngRoute', 'ngSanitize']);
 //  Service
 //****************************************
 app.factory('SongListService', ['$http', '$q', function ($http, $q) {
+	
   var factory = {
 		  init:init  
   };
   return factory;
   
-	function init(scope) {
-		$http.get("/song-list-1980", null).then(function(response) {
-			scope.data = response.data;
-			console.log(response.data);
-		}, function(response) {
-			console.log('ERROR:' + response.data);
-		});
-	}
-
+  function init(scope) {
+    $http.get("/song-list-1980", null).then(function(response) {
+      scope.data = response.data;
+      console.log(response.data);
+    }, function(response) {
+      console.log('ERROR:' + response.data);
+    });
+  }
+  
 //	$http.post('/batch/ExamineesTicketJob', executionParameter, headers).then(function(response) {
-//		console.log(response.data);
-//		$('#loading').addClass('hide');
+//	  console.log(response.data);
+//	  $('#loading').addClass('hide');
 //	}, function(response) {
-//		console.log('ERROR:'+response.data);
-//		$('#loading').addClass('hide');
+//	  console.log('ERROR:'+response.data);
+//	  $('#loading').addClass('hide');
 //	});
-	
+  
 }])
 //  Controller
 //****************************************
 .controller('SongListController', ['$scope', 'SongListService', function ($scope, SongListService) {
-	SongListService.init($scope);
+	
+  SongListService.init($scope);
+  
+  $('.nav-link').removeClass("active");
+
 }])
 //  Route Config
 //****************************************
