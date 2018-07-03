@@ -8,15 +8,14 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
   };
   return factory;
   
-function init() {
-	 
-	$http.get("/song-list-1980", null).then(function(response) {
-		console.log(response.data);
-	}, function(response) {
-		console.log('ERROR:' + response.data);
-	});
-  
-}
+	function init(scope) {
+		$http.get("/song-list-1980", null).then(function(response) {
+			scope.data = response.data;
+			console.log(response.data);
+		}, function(response) {
+			console.log('ERROR:' + response.data);
+		});
+	}
 
 //	$http.post('/batch/ExamineesTicketJob', executionParameter, headers).then(function(response) {
 //		console.log(response.data);
@@ -30,7 +29,7 @@ function init() {
 //  Controller
 //****************************************
 .controller('SongListController', ['$scope', 'SongListService', function ($scope, SongListService) {
-	SongListService.init();
+	SongListService.init($scope);
 }])
 //  Route Config
 //****************************************
@@ -39,7 +38,7 @@ function init() {
     templateUrl: 'music-list',
     controller: 'SongListController'
   }).when('/song-list/1981', {
-    templateUrl: 'music-list2',
+    templateUrl: 'music-list',
     controller: 'SongListController'
   }).when('/song-list/1982', {
     templateUrl: 'music-list',
