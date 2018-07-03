@@ -151,3 +151,7 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
     redirectTo: '/'
   });
 }]);
+
+audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
