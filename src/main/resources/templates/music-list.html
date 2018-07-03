@@ -3,21 +3,21 @@
     <thead>
       <tr>
         <th>id</th>
-        <th>album</th>
-        <th>artist</th>
-        <th>comment</th>
         <th>title</th>
+        <th>artist</th>
+        <th>album</th>
         <th>year</th>
+        <th>comment</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="x in data">
         <td>{{x.id}}</td>
-        <td>{{x.album}}</td>
-        <td>{{x.artist}}</td>
-        <td>{{x.comment}}</td>
         <td>{{x.title}}</td>
+        <td>{{x.artist}}</td>
+        <td>{{x.album}}</td>
         <td>{{x.year}}</td>
+        <td>{{x.comment}}</td>
       </tr>
     </tbody>
   </table>
