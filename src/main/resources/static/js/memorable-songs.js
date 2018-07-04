@@ -5,7 +5,7 @@ var app = angular.module('MusicServer', ['ngRoute', 'ngSanitize']);
 app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 	
   var factory = {
-		  init:init  
+    init:init  
   };
   return factory;
   
@@ -33,7 +33,7 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 	
   SongListService.init($scope);
   
-  $scope.year = 1980;
+  $scope.year = 1986;
   
   $scope.years = [ 
 	  {key:1980,value:"1980年"}, {key:1981,value:"1981年"}, {key:1982,value:"1982年"}, {key:1983,value:"1983年"}, {key:1984,value:"1984年"}, {key:1985,value:"1985年"}, 
@@ -42,7 +42,6 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 	  {key:1998,value:"1998年"}, {key:1999,value:"1999年"}, {key:2000,value:"2000年"}, {key:2001,value:"2001年"}, {key:2002,value:"2002年"}, {key:2003,value:"2003年"}, 
 	  {key:2004,value:"2004年"}, {key:2005,value:"2005年"}, {key:2006,value:"2006年"}, {key:2007,value:"2007年"}, {key:2008,value:"2008年"}, {key:2009,value:"2009年"}, 
 	  {key:2010,value:"2010年"}, {key:2011,value:"2011年"}, {key:2012,value:"2012年"}, {key:2013,value:"2013年"}, {key:2014,value:"2014年"}, {key:2015,value:"2015年"} ];
-  
   
   $scope.changeYears = function(){
 	  console.log('changeYears');
