@@ -20,7 +20,9 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
   }
 
   function search(scope) {
-    $http.post("/search-music-list", scope, null).then(function(response) {
+	var request = new Object();
+	request["searchWord"] = scope.searchWord;
+    $http.post("/search-music-list", request, null).then(function(response) {
       scope.data = response.data;
     }, function(response) {
       console.log('ERROR:' + response.data);

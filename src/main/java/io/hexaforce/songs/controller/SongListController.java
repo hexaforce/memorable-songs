@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,10 +31,10 @@ public class SongListController {
 	}
 	
 
-	@GetMapping("/search-music-list")
+	@PostMapping("/search-music-list")
 	public ResponseEntity<List<MusicItem>> songListSearch3(@RequestBody SongListRequest request) {
 		List<MusicItem> musicItemList = songListService.getMusicItemList();
-		log.info("SearchWord:{}", request.getSearchWord());
+		log.info("searchWord:{}", request.getSearchWord());
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}
 	
