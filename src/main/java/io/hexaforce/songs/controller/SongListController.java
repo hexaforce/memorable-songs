@@ -35,6 +35,8 @@ public class SongListController {
 	public ResponseEntity<List<MusicItem>> songListSearch2(@PathVariable("year") String year) {
 		List<MusicItem> musicItemList = songListService.getMusicItemList();
 		log.info("Year:{}", year);
+
+		
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}
 

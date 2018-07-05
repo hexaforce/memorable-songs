@@ -29,6 +29,7 @@ public class MusicItem extends BaseEntity {
 	
 	private String fileName;
 	private String absolutePath;
+	private String download;
 	
 	//private String genre;
 
