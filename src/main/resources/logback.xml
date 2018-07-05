@@ -14,9 +14,7 @@
 		<file>logs/memorable-songs.log</file>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<!-- daily rollover -->
 			<fileNamePattern>logs/memorable-songs.log.%d{yyyy-MM-dd}</fileNamePattern>
-			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 
@@ -27,6 +25,7 @@
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<pattern>[%date][%-5level]user:%X{user}[%thread] %logger{10}\(%file:%line\) %msg%n</pattern>
 		</encoder>
+
 	</appender>
 
 	<root level="ERROR">
