@@ -45,19 +45,33 @@ public class SongListController {
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}
 
+	/**
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/download-music/{id}")
-	public ResponseEntity<InputStreamResource> downloadMusic(@PathVariable("id") String id) throws FileNotFoundException, UnsupportedEncodingException {
+	public ResponseEntity<InputStreamResource> downloadMusic(@PathVariable("id") Integer id) {
 		
-		List<MusicItem> musicItemList = songListService.getMusicItemList();
 		log.info("id:{}", id);
-		MusicItem musicItem = musicItemList.get(0);
-		String downloadFileName = musicItem.getArtist();
+		MusicItem musicItem = songListService.getMusicItem(id).get();
 		
-		InputStreamResource downloadResource = new InputStreamResource(new FileInputStream(downloadFileName));
+		InputStreamResource downloadResource = null;
+		try {
+			downloadResource = new InputStreamResource(new FileInputStream(musicItem.getAbsolutePath()));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-		headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8''" + URLEncoder.encode(downloadFileName, StandardCharsets.UTF_8.name()));
+		try {
+			headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8''" + URLEncoder.encode(musicItem.getFileName(), StandardCharsets.UTF_8.name()));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 		return new ResponseEntity<InputStreamResource>(downloadResource, headers, HttpStatus.OK);
+		
 	}
 
 	@GetMapping("/song-list-1980")

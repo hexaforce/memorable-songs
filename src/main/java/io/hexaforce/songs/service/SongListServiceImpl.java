@@ -30,7 +30,8 @@ public class SongListServiceImpl implements SongListService {
 		return musicItemList;
 	}
 
-	public Optional<MusicItem> getMusicItemList(Integer id) {
+	@Override
+	public Optional<MusicItem> getMusicItem(Integer id) {
 		return musicItemRepository.findById(id);
 	}
 	

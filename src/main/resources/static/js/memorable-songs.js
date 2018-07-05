@@ -13,9 +13,9 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 	
 	function init(scope) {
 		$http.get("/search-music-list/" + scope.year, null).then(function (response) {
-		  scope.data = response.data;
+			scope.data = response.data;
 		}, function (response) {
-		  console.log('ERROR:' + response.data);
+			console.log('ERROR:' + response.data);
 		});
 	}
 	
@@ -23,9 +23,9 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 		var request = new Object();
 		request["searchWord"] = scope.searchWord;
 		$http.post("/search-music-list", request, null).then(function (response) {
-		  scope.data = response.data;
+			scope.data = response.data;
 		}, function (response) {
-		  console.log('ERROR:' + response.data);
+			console.log('ERROR:' + response.data);
 		});
 	}
 
@@ -36,6 +36,7 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 .controller('SongListController', ['$scope', 'SongListService', function ($scope, SongListService) {
 	
 	$scope.year = 2000;
+	
 	SongListService.init($scope);
 	$scope.changeYears = function () {
 		console.log('changeYears');
@@ -56,7 +57,7 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 	
 	var x = {templateUrl: 'music-list', controller: 'SongListController'};
 	for (var i = 1980; i < 2016; i++) $routeProvider.when('/search-music-list/' + i, x);
-	$routeProvider.otherwise({redirectTo: '/'});
+	$routeProvider.otherwise({redirectTo: '/search-music-list/2000'});
 	
 }]);
 
