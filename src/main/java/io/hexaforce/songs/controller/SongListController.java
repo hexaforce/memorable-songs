@@ -7,9 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.hexaforce.songs.model.MusicItem;
+import io.hexaforce.songs.model.SongListRequest;
 import io.hexaforce.songs.service.SongListService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,9 +25,20 @@ public class SongListController {
 	@GetMapping("/search-music-list/{year}")
 	public ResponseEntity<List<MusicItem>> songListSearch2(@PathVariable("year") String year) {
 		List<MusicItem> musicItemList = songListService.getMusicItemList();
-		log.info("year:{}", year);
+		log.info("Year:{}", year);
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}
+	
+
+	@GetMapping("/search-music-list")
+	public ResponseEntity<List<MusicItem>> songListSearch3(@RequestBody SongListRequest request) {
+		List<MusicItem> musicItemList = songListService.getMusicItemList();
+		log.info("SearchWord:{}", request.getSearchWord());
+		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
+	}
+	
+	
+	
 	
 	@GetMapping("/song-list-1980")
 	public ResponseEntity<List<MusicItem>> songList() {
