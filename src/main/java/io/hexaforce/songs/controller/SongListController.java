@@ -33,7 +33,7 @@ public class SongListController {
 
 	@PostMapping("/search-music-list")
 	public ResponseEntity<List<MusicItem>> songListSearch3(@RequestBody SongListRequest request) {
-		List<MusicItem> musicItemList = songListService.getMusicItemList();
+		List<MusicItem> musicItemList = songListService.getMusicItemList(request.getSearchWord());
 		log.info("searchWord:{}", request.getSearchWord());
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}

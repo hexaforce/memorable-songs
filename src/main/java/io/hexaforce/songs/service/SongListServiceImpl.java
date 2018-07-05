@@ -23,4 +23,10 @@ public class SongListServiceImpl implements SongListService {
 		return musicItemList;
 	}
 
+	@Override
+	public List<MusicItem> getMusicItemList(String artist) {
+		List<MusicItem> musicItemList = musicItemRepository.findByArtistContaining(artist);
+		return musicItemList;
+	}
+
 }
