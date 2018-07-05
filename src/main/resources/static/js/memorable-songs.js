@@ -39,16 +39,11 @@ var app = angular.module('MusicServer', ['ngRoute', 'ngSanitize']);
     $scope.changeYears = function () {
       console.log('changeYears');
     };
-    //$('.nav-link').removeClass("active");
-  }])
-
-  //  Controller
-  //****************************************
-  .controller('SearchController', ['$scope', 'SongListService', function ($scope, SongListService) {
     $scope.searchWord = "";
     $scope.search = function search() {
       SongListService.search($scope);
     };
+    //$('.nav-link').removeClass("active");
   }])
 
   //  Route Config
