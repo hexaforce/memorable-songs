@@ -26,6 +26,10 @@ public class MusicItem extends BaseEntity {
 	private String comment;
 	private String title;
 	private String year;
+	
+	private String fileName;
+	private String absolutePath;
+	
 	//private String genre;
 
 	public MusicItem(ID3v1 tag) {

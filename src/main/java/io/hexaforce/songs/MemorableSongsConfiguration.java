@@ -16,7 +16,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import io.hexaforce.songs.model.MusicItem;
 import io.hexaforce.songs.model.MusicItemRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Configuration
 @EnableConfigurationProperties(MemorableSongsProperties.class)
 public class MemorableSongsConfiguration implements WebMvcConfigurer {
@@ -35,10 +37,16 @@ public class MemorableSongsConfiguration implements WebMvcConfigurer {
 		for (File musicDirectory : topMusicDirectory.listFiles()) {
 			for (File musicFile : musicDirectory.listFiles()) {
 				MP3File mp3File = new MP3File(musicFile);
+				MusicItem musicItem = null;
 				if (mp3File.hasID3v2Tag()) {
-					musicItemList.add(new MusicItem(mp3File.getID3v2Tag()));
+					musicItem = new MusicItem(mp3File.getID3v2Tag());
 				} else if (mp3File.hasID3v1Tag()) {
-					musicItemList.add(new MusicItem(mp3File.getID3v1Tag()));
+					musicItem = new MusicItem(mp3File.getID3v1Tag());
+				}
+				if (musicItem != null) {
+					musicItem.setAbsolutePath(musicFile.getAbsolutePath());
+					musicItem.setFileName(musicFile.getName());
+					musicItemList.add(musicItem);
 				}
 			}
 		}

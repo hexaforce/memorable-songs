@@ -1,6 +1,7 @@
 package io.hexaforce.songs.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,9 @@ public class SongListServiceImpl implements SongListService {
 		return musicItemList;
 	}
 
+	public Optional<MusicItem> getMusicItemList(Integer id) {
+		return musicItemRepository.findById(id);
+	}
+	
+	
 }
