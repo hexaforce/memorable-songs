@@ -21,16 +21,17 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 //  Controller
 //****************************************
 .controller('SongListController', ['$scope', 'SongListService', function ($scope, SongListService) {
+
+  $scope.year = 2000;
   
   SongListService.init($scope);
-  
-  $scope.year = 1986;
   
   $scope.changeYears = function(){
 	  console.log('changeYears');
   };
   
   //$('.nav-link').removeClass("active");
+  
 }])
 //  Route Config
 //****************************************
