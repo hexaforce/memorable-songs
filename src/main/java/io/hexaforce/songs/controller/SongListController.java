@@ -30,7 +30,12 @@ public class SongListController {
 
 	@Autowired
 	private SongListService songListService;
-
+	
+	@GetMapping("/healthcheck")
+	public ResponseEntity<String> healthcheck() {
+		return new ResponseEntity<String>("OK", HttpStatus.OK);
+	}
+	
 	@GetMapping("/search-music-list/{year}")
 	public ResponseEntity<List<MusicItem>> songListSearch2(@PathVariable("year") String year) {
 		List<MusicItem> musicItemList = songListService.getYearReleasedMusicItemList(year);
@@ -45,6 +50,8 @@ public class SongListController {
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}
 
+	
+	
 	/**
 	 * @param id
 	 * @return
