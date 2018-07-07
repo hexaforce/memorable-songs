@@ -57,7 +57,7 @@ app.factory('SongListService', ['$http', '$q', function ($http, $q) {
 	
 	var x = {templateUrl: 'music-list', controller: 'SongListController'};
 	for (var i = 1980; i < 2016; i++) $routeProvider.when('/search-music-list/' + i, x);
-	$routeProvider.otherwise({redirectTo: '/search-music-list/2000'});
+	$routeProvider.otherwise({redirectTo: '/search-music-list/1980'});
 	
 }]);
 

@@ -19,13 +19,13 @@ public class SongListServiceImpl implements SongListService {
 //	private SongListUtile songListUtile;
 
 	@Override
-	public List<MusicItem> getMusicItemList() {
-		List<MusicItem> musicItemList = musicItemRepository.findAll();
+	public List<MusicItem> getYearReleasedMusicItemList(String released) {
+		List<MusicItem> musicItemList = musicItemRepository.findByYearReleased(released);
 		return musicItemList;
 	}
 
 	@Override
-	public List<MusicItem> getMusicItemList(String artist) {
+	public List<MusicItem> getArtistContainingMusicItemList(String artist) {
 		List<MusicItem> musicItemList = musicItemRepository.findByArtistContaining(artist);
 		return musicItemList;
 	}

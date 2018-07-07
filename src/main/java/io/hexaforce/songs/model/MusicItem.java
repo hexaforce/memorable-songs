@@ -43,17 +43,17 @@ public class MusicItem extends BaseEntity {
 	}
 
 	public MusicItem(AbstractID3v2 tag) {
-		this.album = tag.getAlbumTitle();
-		this.artist = tag.getLeadArtist();
-		this.comment = tag.getSongComment();
-		this.title = tag.getSongTitle();
-		this.year = tag.getYearReleased();
+		this.album = convert(tag.getAlbumTitle());
+		this.artist = convert(tag.getLeadArtist());
+		this.comment = convert(tag.getSongComment());
+		this.title = convert(tag.getSongTitle());
+		this.year = convert(tag.getYearReleased());
 		//this.genre = tag.getSongGenre();
 	}
 	
-	private String convert (String x) {
+	private String convert(String x) {
 		try {
-			return new String (x.getBytes("ISO-8859-1"));
+			return new String (x.getBytes("ISO-8859-1"), "Shift_JIS");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}

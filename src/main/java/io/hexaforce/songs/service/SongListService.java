@@ -7,9 +7,9 @@ import io.hexaforce.songs.model.MusicItem;
 
 public interface SongListService {
 
-	public List<MusicItem> getMusicItemList();
+	public List<MusicItem> getYearReleasedMusicItemList(String released);
 
-	public List<MusicItem> getMusicItemList(String artist);
+	public List<MusicItem> getArtistContainingMusicItemList(String artist);
 	
 	public Optional<MusicItem> getMusicItem(Integer id);
 	

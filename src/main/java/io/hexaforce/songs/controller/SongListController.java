@@ -33,16 +33,14 @@ public class SongListController {
 
 	@GetMapping("/search-music-list/{year}")
 	public ResponseEntity<List<MusicItem>> songListSearch2(@PathVariable("year") String year) {
-		List<MusicItem> musicItemList = songListService.getMusicItemList();
+		List<MusicItem> musicItemList = songListService.getYearReleasedMusicItemList(year);
 		log.info("Year:{}", year);
-
-		
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}
 
 	@PostMapping("/search-music-list")
 	public ResponseEntity<List<MusicItem>> songListSearch3(@RequestBody SongListRequest request) {
-		List<MusicItem> musicItemList = songListService.getMusicItemList(request.getSearchWord());
+		List<MusicItem> musicItemList = songListService.getArtistContainingMusicItemList(request.getSearchWord());
 		log.info("searchWord:{}", request.getSearchWord());
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}
@@ -76,16 +74,16 @@ public class SongListController {
 		
 	}
 
-	@GetMapping("/song-list-1980")
-	public ResponseEntity<List<MusicItem>> songList() {
-		List<MusicItem> musicItemList = songListService.getMusicItemList();
-		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
-	}
-
-	@GetMapping("/song-list-search")
-	public ResponseEntity<List<MusicItem>> songListSearch() {
-		List<MusicItem> musicItemList = songListService.getMusicItemList();
-		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
-	}
+//	@GetMapping("/song-list-1980")
+//	public ResponseEntity<List<MusicItem>> songList() {
+//		List<MusicItem> musicItemList = songListService.getMusicItemList();
+//		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
+//	}
+//
+//	@GetMapping("/song-list-search")
+//	public ResponseEntity<List<MusicItem>> songListSearch() {
+//		List<MusicItem> musicItemList = songListService.getMusicItemList();
+//		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
+//	}
 
 }

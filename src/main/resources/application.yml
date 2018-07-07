@@ -39,5 +39,6 @@ spring:
     basename: messages
   thymeleaf:
     mode: HTML
+    encoding: UTF-8
   song: 
     top-music-directory: '/home/relics9/music'
