@@ -20,7 +20,7 @@ management:
 # Active Spring profiles
 spring:
   profiles:
-    active: default
+    active: production
   h2:
     console:
       enabled: true
@@ -40,4 +40,4 @@ spring:
   thymeleaf:
     mode: HTML
   song: 
-    top-music-directory: '/home/relics9/music'
+    top-music-directory: 'C:\music'
