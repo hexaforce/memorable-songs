@@ -25,13 +25,13 @@ public class MemorableSongsConfiguration implements WebMvcConfigurer {
 
 	@Autowired
 	private MemorableSongsProperties memorableSongsProperties;
-	
+
 	@Autowired
 	private MusicItemRepository musicItemRepository;
-	
+
 	@PostConstruct
 	private void setupSongListDatabase() throws IOException, TagException {
-		
+
 		List<MusicItem> musicItemList = new ArrayList<MusicItem>();
 		File topMusicDirectory = new File(memorableSongsProperties.getTopMusicDirectory());
 		for (File musicDirectory : topMusicDirectory.listFiles()) {
@@ -39,9 +39,9 @@ public class MemorableSongsConfiguration implements WebMvcConfigurer {
 				try {
 					MP3File mp3File = new MP3File(musicFile);
 					MusicItem musicItem = null;
-//					if (mp3File.hasID3v2Tag()) {
-//						musicItem = new MusicItem(mp3File.getID3v2Tag());
-//					}
+					// if (mp3File.hasID3v2Tag()) {
+					// musicItem = new MusicItem(mp3File.getID3v2Tag());
+					// }
 					if (mp3File.hasID3v1Tag()) {
 						musicItem = new MusicItem(mp3File.getID3v1Tag());
 					}
@@ -51,16 +51,18 @@ public class MemorableSongsConfiguration implements WebMvcConfigurer {
 						musicItemList.add(musicItem);
 					}
 				} catch (UnsupportedOperationException e) {
-					log.error("###Missing!### {}",musicFile);
+					log.error("### UnsupportedOperationException ### {}", musicFile);
+				} catch (TagException e) {
+					log.error("### TagException ### {}", musicFile);
 				}
 
 			}
 		}
-		
+
 		if (!musicItemList.isEmpty()) {
 			musicItemRepository.saveAll(musicItemList);
 		}
-		
+
 	}
-	
+
 }
