@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "music_item")
 public class MusicItem extends BaseEntity {
