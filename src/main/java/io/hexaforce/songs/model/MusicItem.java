@@ -26,8 +26,7 @@ public class MusicItem extends BaseEntity {
 	private String comment;
 	private String title;
 	private String year;
-	private String track;
-	
+	private Integer track;
 	
 	private String fileName;
 	private String absolutePath;
@@ -41,7 +40,7 @@ public class MusicItem extends BaseEntity {
 		this.comment = convert(tag.getComment());
 		this.title = convert(tag.getTitle());
 		this.year = convert(tag.getYear());
-		this.track = convert(tag.getTrackNumberOnAlbum());
+		this.track = Integer.parseInt(tag.getTrackNumberOnAlbum());
 		//this.genre = Byte.toString(tag.getGenre());
 	}
 
@@ -51,7 +50,7 @@ public class MusicItem extends BaseEntity {
 		this.comment = convert(tag.getSongComment());
 		this.title = convert(tag.getSongTitle());
 		this.year = convert(tag.getYearReleased());
-		this.track = convert(tag.getTrackNumberOnAlbum());
+		this.track = Integer.parseInt(tag.getTrackNumberOnAlbum());
 		//this.genre = tag.getSongGenre();
 	}
 	

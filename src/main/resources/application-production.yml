@@ -40,4 +40,4 @@ spring:
   thymeleaf:
     mode: HTML
   song: 
-    top-music-directory: '/home/ubuntu/music'
+    top-music-directory: '/home/relics9/music'

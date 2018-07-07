@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MusicItemRepository extends JpaRepository<MusicItem, Integer> {
 	
-	@Query("SELECT c FROM MusicItem c WHERE (c.artist LIKE %:searchWord%) OR (c.title LIKE %:searchWord%)")
+	@Query("SELECT c FROM MusicItem c WHERE (c.artist LIKE %:searchWord%) OR (c.title LIKE %:searchWord%) ORDER BY c.year, c.track")
 	List<MusicItem> findByArtistContaining(@Param("searchWord")String searchWord);
 
-	@Query("SELECT c FROM MusicItem c WHERE c.year LIKE %:released%")
+	@Query("SELECT c FROM MusicItem c WHERE c.year LIKE %:released% ORDER BY c.year, c.track")
 	List<MusicItem> findByYearReleased(@Param("released")String released);
 	
 }
