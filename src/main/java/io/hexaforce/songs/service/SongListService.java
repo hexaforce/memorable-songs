@@ -9,7 +9,7 @@ public interface SongListService {
 
 	public List<MusicItem> getYearReleasedMusicItemList(String released);
 
-	public List<MusicItem> getArtistContainingMusicItemList(String artist);
+	public List<MusicItem> getArtistContainingMusicItemList(String searchWord);
 	
 	public Optional<MusicItem> getMusicItem(Integer id);
 	

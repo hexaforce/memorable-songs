@@ -25,8 +25,8 @@ public class SongListServiceImpl implements SongListService {
 	}
 
 	@Override
-	public List<MusicItem> getArtistContainingMusicItemList(String artist) {
-		List<MusicItem> musicItemList = musicItemRepository.findByArtistContaining(artist);
+	public List<MusicItem> getArtistContainingMusicItemList(String searchWord) {
+		List<MusicItem> musicItemList = musicItemRepository.findByArtistContaining(searchWord);
 		return musicItemList;
 	}
 
