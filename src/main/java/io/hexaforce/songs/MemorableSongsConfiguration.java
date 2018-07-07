@@ -54,8 +54,10 @@ public class MemorableSongsConfiguration implements WebMvcConfigurer {
 					log.error("### UnsupportedOperationException ### {}", musicFile);
 				} catch (TagException e) {
 					log.error("### TagException ### {}", musicFile);
+				} catch (IOException e) {
+					log.error("### IOException ### {}", musicFile);
 				}
-
+				
 			}
 		}
 
