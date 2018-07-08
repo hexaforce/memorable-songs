@@ -35,7 +35,7 @@ function setup_jPlayer(){
 //########################################
 // Angular
 //########################################
-var app = angular.module('MusicServer', ['ngRoute', 'ngSanitize']);
+var app = angular.module('WebMusic', ['ngRoute', 'ngSanitize']);
 
 // Service
 // ****************************************

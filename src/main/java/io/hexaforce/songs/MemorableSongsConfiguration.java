@@ -52,6 +52,7 @@ public class MemorableSongsConfiguration implements WebMvcConfigurer {
 						musicItem.setAbsolutePath(musicFile.getAbsolutePath());
 						musicItem.setFileName(musicFile.getName());
 						musicItemList.add(musicItem);
+						log.info("Loading...:{}",musicItem);
 					} catch (IOException | TagException | UnsupportedOperationException e) {
 						log.error("### IOException | TagException | UnsupportedOperationException ### {}", musicFile);
 					}
