@@ -43,8 +43,6 @@ public class MemorableSongsConfiguration implements WebMvcConfigurer {
 		List<MusicItem> musicItemList = new ArrayList<MusicItem>();
 		for (File musicDirectory : new File(memorableSongsProperties.getTopMusicDirectory()).listFiles()) {
 			for (File musicFile : musicDirectory.listFiles()) {
-
-				
 				if (musicFile.getPath().endsWith(".mp3")) {
 					MusicItem musicItem = null;
 					try {
