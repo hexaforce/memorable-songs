@@ -30,12 +30,12 @@ public class SongListController {
 
 	@Autowired
 	private SongListService songListService;
-	
+
 	@GetMapping("/healthcheck")
 	public ResponseEntity<String> healthcheck() {
 		return new ResponseEntity<String>("OK", HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/search-music-list/{year}")
 	public ResponseEntity<List<MusicItem>> songListSearch2(@PathVariable("year") String year) {
 		List<MusicItem> musicItemList = songListService.getYearReleasedMusicItemList(year);
@@ -50,47 +50,34 @@ public class SongListController {
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
 	}
 
-	
-	
 	/**
 	 * @param id
 	 * @return
 	 */
 	@GetMapping("/download-music/{id}")
 	public ResponseEntity<InputStreamResource> downloadMusic(@PathVariable("id") Integer id) {
-		
+
 		log.info("id:{}", id);
 		MusicItem musicItem = songListService.getMusicItem(id).get();
-		
+
 		InputStreamResource downloadResource = null;
 		try {
 			downloadResource = new InputStreamResource(new FileInputStream(musicItem.getAbsolutePath()));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
 		try {
-			headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8''" + URLEncoder.encode(musicItem.getFileName(), StandardCharsets.UTF_8.name()));
+			headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8''"
+					+ URLEncoder.encode(musicItem.getFileName(), StandardCharsets.UTF_8.name()));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
-		return new ResponseEntity<InputStreamResource>(downloadResource, headers, HttpStatus.OK);
-		
-	}
 
-//	@GetMapping("/song-list-1980")
-//	public ResponseEntity<List<MusicItem>> songList() {
-//		List<MusicItem> musicItemList = songListService.getMusicItemList();
-//		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
-//	}
-//
-//	@GetMapping("/song-list-search")
-//	public ResponseEntity<List<MusicItem>> songListSearch() {
-//		List<MusicItem> musicItemList = songListService.getMusicItemList();
-//		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);
-//	}
+		return new ResponseEntity<InputStreamResource>(downloadResource, headers, HttpStatus.OK);
+
+	}
 
 }

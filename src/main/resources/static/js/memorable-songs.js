@@ -1,9 +1,46 @@
 'use strict';
+
+//########################################
+// jPlayer
+//########################################
+function setup_jPlayer(){
+
+	var	jquery_jplayer_1 = $("#jquery_jplayer_1");
+	
+	// Create click handlers for the different tracks
+	$("#jp_container .track").click(function(e) {
+		jquery_jplayer_1.jPlayer("setMedia", {
+			title: $(this).attr("title"),
+			mp3: $(this).attr("href")
+		});
+		jquery_jplayer_1.jPlayer("play");
+		$(this).blur();
+		return false;
+	});
+	
+	$("#jquery_jplayer_1").jPlayer({
+		swfPath: "/js/vendor",
+		supplied: "mp3",
+		wmode: "window",
+		useStateClassSkin: true,
+		autoBlur: false,
+		smoothPlayBar: true,
+		keyEnabled: true,
+		remainingDuration: true,
+		toggleDuration: true,
+		volume: 0.1
+	});
+}
+
+//########################################
+// Angular
+//########################################
 var app = angular.module('MusicServer', ['ngRoute', 'ngSanitize']);
+
 // Service
 // ****************************************
-app.factory('SongListService', ['$http', '$q',
-    function ($http, $q) {
+app.factory('SongListService', ['$http', '$q', function ($http, $q) {
+
       var factory = {
     		  init:init,
         search: search
@@ -27,6 +64,7 @@ app.factory('SongListService', ['$http', '$q',
           console.log('ERROR:' + response.data);
         });
       }
+
     }
   ])
   // Controller
@@ -291,12 +329,20 @@ app.factory('SongListService', ['$http', '$q',
       templateUrl: 'music-list',
       controller: 'SongList' + i + 'Controller'
     });
-    $routeProvider.otherwise({
-      redirectTo: '/search-music-list/1980'
-    });
-  }]);
-// audiojs
-// ****************************************
-audiojs.events.ready(function () {
-  var as = audiojs.createAll();
+    $routeProvider.otherwise({redirectTo: '/search-music-list/1980'});
+  }])
+  // onFinishRender
+  // ****************************************
+.directive('onFinishRender', function($timeout) {
+	return {
+		restrict : 'A',
+		link : function(scope, element, attr) {
+			if (scope.$last === true) {
+				$timeout(function() {
+					setup_jPlayer();
+				});
+			}
+		}
+	}
 });
+

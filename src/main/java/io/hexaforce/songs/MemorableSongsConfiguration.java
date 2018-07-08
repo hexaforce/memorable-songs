@@ -29,42 +29,42 @@ public class MemorableSongsConfiguration implements WebMvcConfigurer {
 	@Autowired
 	private MusicItemRepository musicItemRepository;
 
-	@PostConstruct
-	private void setupSongListDatabase() throws IOException, TagException {
+	private MusicItem convert(MP3File mp3File) {
+		MusicItem musicItem = null;
+		if (mp3File.hasID3v1Tag())
+			musicItem = new MusicItem(mp3File.getID3v1Tag());
+		if (musicItem == null && mp3File.hasID3v2Tag())
+			musicItem = new MusicItem(mp3File.getID3v2Tag());
+		return musicItem;
+	}
 
+	@PostConstruct
+	private void setupSongListDatabase() {
 		List<MusicItem> musicItemList = new ArrayList<MusicItem>();
-		File topMusicDirectory = new File(memorableSongsProperties.getTopMusicDirectory());
-		for (File musicDirectory : topMusicDirectory.listFiles()) {
+		for (File musicDirectory : new File(memorableSongsProperties.getTopMusicDirectory()).listFiles()) {
 			for (File musicFile : musicDirectory.listFiles()) {
-				try {
-					MP3File mp3File = new MP3File(musicFile);
+
+				
+				if (musicFile.getPath().endsWith(".mp3")) {
 					MusicItem musicItem = null;
-					// if (mp3File.hasID3v2Tag()) {
-					// musicItem = new MusicItem(mp3File.getID3v2Tag());
-					// }
-					if (mp3File.hasID3v1Tag()) {
-						musicItem = new MusicItem(mp3File.getID3v1Tag());
-					}
-					if (musicItem != null) {
+					try {
+						musicItem = convert(new MP3File(musicFile));
 						musicItem.setAbsolutePath(musicFile.getAbsolutePath());
 						musicItem.setFileName(musicFile.getName());
 						musicItemList.add(musicItem);
+					} catch (IOException | TagException | UnsupportedOperationException e) {
+						log.error("### IOException | TagException | UnsupportedOperationException ### {}", musicFile);
 					}
-				} catch (UnsupportedOperationException e) {
-					log.error("### UnsupportedOperationException ### {}", musicFile);
-				} catch (TagException e) {
-					log.error("### TagException ### {}", musicFile);
-				} catch (IOException e) {
-					log.error("### IOException ### {}", musicFile);
+				} else {
+
 				}
-				
 			}
 		}
-
 		if (!musicItemList.isEmpty()) {
+			for (MusicItem x:musicItemList) {
+				log.info(x.getAbsolutePath());
+			}
 			musicItemRepository.saveAll(musicItemList);
 		}
-
 	}
-
 }

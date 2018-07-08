@@ -11,7 +11,6 @@ import org.farng.mp3.id3.ID3v1;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 @Data
 @Entity
@@ -29,7 +28,6 @@ public class MusicItem extends BaseEntity {
 	
 	private String fileName;
 	private String absolutePath;
-	private String download;
 	
 	//private String genre;
 
@@ -39,7 +37,11 @@ public class MusicItem extends BaseEntity {
 		this.comment = convert(tag.getComment());
 		this.title = convert(tag.getTitle());
 		this.year = convert(tag.getYear());
-		this.track = Integer.parseInt(tag.getTrackNumberOnAlbum());
+		try {
+			this.track = Integer.parseInt(tag.getTrackNumberOnAlbum());
+		} catch (UnsupportedOperationException | NumberFormatException e) {
+			this.track = 0;
+		}
 		//this.genre = Byte.toString(tag.getGenre());
 	}
 
@@ -49,7 +51,11 @@ public class MusicItem extends BaseEntity {
 		this.comment = convert(tag.getSongComment());
 		this.title = convert(tag.getSongTitle());
 		this.year = convert(tag.getYearReleased());
-		this.track = Integer.parseInt(tag.getTrackNumberOnAlbum());
+		try {
+			this.track = Integer.parseInt(tag.getTrackNumberOnAlbum());
+		} catch (UnsupportedOperationException | NumberFormatException e) {
+			this.track = 0;
+		}
 		//this.genre = tag.getSongGenre();
 	}
 	

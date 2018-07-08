@@ -42,3 +42,4 @@ spring:
     encoding: UTF-8
   song: 
     top-music-directory: '/home/ubuntu/music'
+    #top-music-directory: '/home/relics9/music2'
