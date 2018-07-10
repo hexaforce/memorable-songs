@@ -19,7 +19,7 @@ function setup_jPlayer(){
 	});
 	
 	$("#jquery_jplayer_1").jPlayer({
-		swfPath: "/js/vendor",
+		swfPath: "/webjars/jplayer/dist/jplayer",
 		supplied: "mp3",
 		wmode: "window",
 		useStateClassSkin: true,
