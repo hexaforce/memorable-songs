@@ -1,11 +1,35 @@
 <th:block th:fragment="content (select)">
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://github.com/hexaforce" target="_brank">Hexaforce WebMusic</a>
-    <input ng-model="searchWord" class="form-control form-control-dark w-100" type="text" placeholder="曲名またはアーティスト検索" aria-label="Search">
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" ng-click="search()">検索</a>
-      </li>
-    </ul>
+    
+    <!--     <input ng-model="searchWord" class="form-control form-control-dark w-100" type="text" placeholder="曲名またはアーティスト検索" aria-label="Search"> -->
+    <!--     <ul class="navbar-nav px-3"> -->
+    <!--       <li class="nav-item text-nowrap"> -->
+    <!--         <a class="nav-link" ng-click="search()">検索</a> -->
+    <!--       </li> -->
+    <!--     </ul> -->
+
+	<div class="input-group">
+		<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+		<div class="input-group-append" id="button-addon4">
+			<button class="btn btn-outline-secondary" type="button">Button</button>
+		</div>
+	</div>
+    
+    <div class="input-group">
+	    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+	      <option selected>Choose...</option>
+	      <option value="1">One</option>
+	      <option value="2">Two</option>
+	      <option value="3">Three</option>
+	    </select>
+	    <div class="input-group-append">
+	    	<button class="btn btn-outline-secondary" type="button">Button</button>
+	    </div>
+    </div>
+    
+    <div th:replace="~{music-player :: content (${page})}" />
+    
   </nav>
 </th:block>
