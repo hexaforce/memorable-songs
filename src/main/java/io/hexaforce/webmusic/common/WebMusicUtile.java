@@ -1,15 +1,15 @@
-package io.hexaforce.songs.common;
+package io.hexaforce.webmusic.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import io.hexaforce.songs.MemorableSongsProperties;
+import io.hexaforce.webmusic.WebMusicProperties;
 
 @Component
-public class SongListUtile {
+public class WebMusicUtile {
 
 	@Autowired
-	private MemorableSongsProperties memorableSongsProperties;
+	private WebMusicProperties memorableSongsProperties;
 	
 	public void aaa() {
 		memorableSongsProperties.getTopMusicDirectory();

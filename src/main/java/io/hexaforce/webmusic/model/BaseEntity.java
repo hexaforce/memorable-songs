@@ -1,4 +1,4 @@
-package io.hexaforce.songs.model;
+package io.hexaforce.webmusic.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

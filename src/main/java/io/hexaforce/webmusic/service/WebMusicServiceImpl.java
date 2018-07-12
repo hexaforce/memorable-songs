@@ -1,4 +1,4 @@
-package io.hexaforce.songs.service;
+package io.hexaforce.webmusic.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,17 +6,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.hexaforce.songs.model.MusicItem;
-import io.hexaforce.songs.model.MusicItemRepository;
+import io.hexaforce.webmusic.common.WebMusicUtile;
+import io.hexaforce.webmusic.model.MusicItem;
+import io.hexaforce.webmusic.model.MusicItemRepository;
 
 @Service
-public class SongListServiceImpl implements SongListService {
+public class WebMusicServiceImpl implements WebMusicService {
 
 	@Autowired
 	private MusicItemRepository musicItemRepository;
 
-//	@Autowired
-//	private SongListUtile songListUtile;
+	@Autowired
+	private WebMusicUtile songListUtile;
 
 	@Override
 	public List<MusicItem> getYearReleasedMusicItemList(String released) {

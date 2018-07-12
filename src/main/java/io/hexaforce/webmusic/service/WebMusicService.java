@@ -1,11 +1,11 @@
-package io.hexaforce.songs.service;
+package io.hexaforce.webmusic.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import io.hexaforce.songs.model.MusicItem;
+import io.hexaforce.webmusic.model.MusicItem;
 
-public interface SongListService {
+public interface WebMusicService {
 
 	public List<MusicItem> getYearReleasedMusicItemList(String released);
 

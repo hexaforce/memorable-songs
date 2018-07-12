@@ -1,4 +1,4 @@
-package io.hexaforce.songs.controller;
+package io.hexaforce.webmusic.controller;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,17 +19,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.hexaforce.songs.model.MusicItem;
-import io.hexaforce.songs.model.SongListRequest;
-import io.hexaforce.songs.service.SongListService;
+import io.hexaforce.webmusic.common.WebMusicRequest;
+import io.hexaforce.webmusic.model.MusicItem;
+import io.hexaforce.webmusic.service.WebMusicService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-public class SongListController {
+public class WebMusicController {
 
 	@Autowired
-	private SongListService songListService;
+	private WebMusicService songListService;
 
 	@GetMapping("/healthcheck")
 	public ResponseEntity<String> healthcheck() {
@@ -44,7 +44,7 @@ public class SongListController {
 	}
 
 	@PostMapping("/search-music-list")
-	public ResponseEntity<List<MusicItem>> songListSearch3(@RequestBody SongListRequest request) {
+	public ResponseEntity<List<MusicItem>> songListSearch3(@RequestBody WebMusicRequest request) {
 		List<MusicItem> musicItemList = songListService.getArtistContainingMusicItemList(request.getSearchWord());
 		log.info("searchWord:{}", request.getSearchWord());
 		return new ResponseEntity<List<MusicItem>>(musicItemList, HttpStatus.OK);

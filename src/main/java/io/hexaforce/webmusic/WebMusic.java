@@ -1,4 +1,4 @@
-package io.hexaforce.songs;
+package io.hexaforce.webmusic;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -8,11 +8,11 @@ import org.springframework.boot.context.ApplicationPidFileWriter;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-public class MemorableSongsApplication {
+public class WebMusic {
 	
 	public static void main(String[] args) {
 		new SpringApplicationBuilder()		
-		.sources(MemorableSongsApplication.class)
+		.sources(WebMusic.class)
 		.listeners(new ApplicationPidFileWriter())
 		.bannerMode(Banner.Mode.CONSOLE)
 		.run(args);

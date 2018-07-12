@@ -5,10 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.hexaforce</groupId>
-	<artifactId>memorable-songs</artifactId>
+	<artifactId>webmusic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-	<name>memorable-songs</name>
+	<name>webmusic</name>
+	<url>https://webmusic.heaforce.io</url>
 	<description>Check your memorable songs</description>
 
 	<parent>

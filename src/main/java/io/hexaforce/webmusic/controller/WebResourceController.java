@@ -1,4 +1,4 @@
-package io.hexaforce.songs.controller;
+package io.hexaforce.webmusic.controller;
 
 import java.util.Map;
 

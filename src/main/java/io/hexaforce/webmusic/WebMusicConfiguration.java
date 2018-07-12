@@ -1,4 +1,4 @@
-package io.hexaforce.songs;
+package io.hexaforce.webmusic;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,17 +14,17 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import io.hexaforce.songs.model.MusicItem;
-import io.hexaforce.songs.model.MusicItemRepository;
+import io.hexaforce.webmusic.model.MusicItem;
+import io.hexaforce.webmusic.model.MusicItemRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
-@EnableConfigurationProperties(MemorableSongsProperties.class)
-public class MemorableSongsConfiguration implements WebMvcConfigurer {
+@EnableConfigurationProperties(WebMusicProperties.class)
+public class WebMusicConfiguration implements WebMvcConfigurer {
 
 	@Autowired
-	private MemorableSongsProperties memorableSongsProperties;
+	private WebMusicProperties memorableSongsProperties;
 
 	@Autowired
 	private MusicItemRepository musicItemRepository;
