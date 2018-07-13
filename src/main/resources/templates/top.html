@@ -1,35 +1,30 @@
 <th:block th:fragment="content (select)">
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://github.com/hexaforce" target="_brank">Hexaforce WebMusic</a>
-    
-    <!--     <input ng-model="searchWord" class="form-control form-control-dark w-100" type="text" placeholder="曲名またはアーティスト検索" aria-label="Search"> -->
-    <!--     <ul class="navbar-nav px-3"> -->
-    <!--       <li class="nav-item text-nowrap"> -->
-    <!--         <a class="nav-link" ng-click="search()">検索</a> -->
-    <!--       </li> -->
-    <!--     </ul> -->
+    <div th:replace="~{music-player :: content (${page})}" />
 
 	<div class="input-group">
-		<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
-		<div class="input-group-append" id="button-addon4">
-			<button class="btn btn-outline-secondary" type="button">Button</button>
+		<input type="text" class="form-control" placeholder="曲名またはアーティスト検索" aria-label="Song name or artist search" aria-describedby="button-addon" ng-model="searchWord" ng-click="search()">
+		<div class="input-group-append" id="button-addon">
+			<button class="btn btn-outline-secondary" type="button">検索</button>
 		</div>
 	</div>
     
-    <div class="input-group">
-	    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-	      <option selected>Choose...</option>
-	      <option value="1">One</option>
-	      <option value="2">Two</option>
-	      <option value="3">Three</option>
-	    </select>
-	    <div class="input-group-append">
-	    	<button class="btn btn-outline-secondary" type="button">Button</button>
-	    </div>
-    </div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect">年代</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect" ng-model="year" ng-change="init()">
+    <option selected>選択</option>
+    <option value="1980">１９８０年</option>
+    <option value="2015">２０１５年</option>
+    <option value="2014">２０１４年</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
     
-    <div th:replace="~{music-player :: content (${page})}" />
+    
     
   </nav>
 </th:block>
